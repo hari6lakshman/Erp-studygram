@@ -30,7 +30,7 @@ export function LoginForm() {
         <Input
           id="username"
           name="username"
-          placeholder="e.g., iitm"
+          placeholder=""
           required
           autoComplete="username"
         />
