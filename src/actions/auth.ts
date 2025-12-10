@@ -6,8 +6,6 @@ import { createSession, deleteSession } from '@/lib/session';
 const USERS: Record<string, string> = {
   stjosephs: 'stjosephs@123',
   iitm: 'iitm@123',
-  saveetha: 'saveetha@123',
-  admin: 'admin@123',
 };
 
 export type LoginFormState = {
