@@ -3,7 +3,9 @@
 import { redirect } from 'next/navigation';
 import { createSession, deleteSession } from '@/lib/session';
 
-const USERS: Record<string, string> = {};
+const USERS: Record<string, string> = {
+  demo: 'demo',
+};
 
 export type LoginFormState = {
   error: string | null;
