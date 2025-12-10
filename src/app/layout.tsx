@@ -4,7 +4,7 @@ import { Header } from '@/components/layout/Header';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Classroom Central',
+  title: 'Erp Studygram',
   description: 'Your central hub for browsing, downloading, and sharing class notes from various colleges.',
 };
 

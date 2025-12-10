@@ -30,7 +30,7 @@ export function HeaderClient({ session }: { session: Session }) {
         <Link href="/" className="mr-6 flex items-center gap-2">
           <BookCopy className="h-6 w-6 text-primary" />
           <span className="font-headline text-xl font-bold">
-            Classroom Central
+            Erp Studygram
           </span>
         </Link>
         <nav className="flex items-center gap-4 text-sm">
