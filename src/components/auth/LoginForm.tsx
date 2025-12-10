@@ -41,7 +41,7 @@ export function LoginForm() {
           id="password"
           name="password"
           type="password"
-          placeholder="e.g., iitm@123"
+          placeholder=""
           required
           autoComplete="current-password"
         />
