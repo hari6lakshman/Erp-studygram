@@ -60,7 +60,6 @@ export function LoginForm() {
         <p className="font-bold">Available credentials:</p>
         <p>stjosephs / stjosephs@123</p>
         <p>iitm / iitm@123</p>
-        <p>saveetha / saveetha@123</p>
         <p>admin / admin@123</p>
       </div>
     </form>
