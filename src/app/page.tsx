@@ -11,7 +11,7 @@ export default async function Home() {
     <div className="flex flex-col">
       <header className="p-6 md:p-8">
         <h1 className="font-headline text-4xl md:text-5xl font-bold text-center text-primary">
-          Classroom Central
+          Erp - Studygram
         </h1>
         <p className="mt-2 text-center text-lg text-muted-foreground">
           Browse and download notes from top colleges.
