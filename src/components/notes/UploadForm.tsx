@@ -1,6 +1,7 @@
 'use client';
 
-import { useFormState, useFormStatus } from 'react-dom';
+import { useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { createNote, type CreateNoteState } from '@/actions/notes';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -22,7 +23,7 @@ function SubmitButton() {
 
 export function UploadForm({ uploader }: { uploader: string }) {
   const initialState: CreateNoteState = { error: null, success: false };
-  const [state, dispatch] = useFormState(createNote, initialState);
+  const [state, dispatch] = useActionState(createNote, initialState);
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
