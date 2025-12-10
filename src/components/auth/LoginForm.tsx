@@ -55,10 +55,6 @@ export function LoginForm() {
       )}
 
       <SubmitButton />
-
-      <div className="text-center text-sm text-muted-foreground">
-        
-      </div>
     </form>
   );
 }
