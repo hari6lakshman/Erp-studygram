@@ -4,7 +4,6 @@ import { redirect } from 'next/navigation';
 import { createSession, deleteSession } from '@/lib/session';
 
 const USERS: Record<string, string> = {
-  stjosephs: 'stjosephs@123',
   iitm: 'iitm@123',
 };
 
