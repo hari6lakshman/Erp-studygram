@@ -3,9 +3,7 @@
 import { redirect } from 'next/navigation';
 import { createSession, deleteSession } from '@/lib/session';
 
-const USERS: Record<string, string> = {
-  iitm: 'iitm@123',
-};
+const USERS: Record<string, string> = {};
 
 export type LoginFormState = {
   error: string | null;

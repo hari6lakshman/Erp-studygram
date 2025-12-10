@@ -58,7 +58,6 @@ export function LoginForm() {
 
       <div className="text-center text-sm text-muted-foreground">
         <p className="font-bold">Available credentials:</p>
-        <p>iitm / iitm@123</p>
       </div>
     </form>
   );
