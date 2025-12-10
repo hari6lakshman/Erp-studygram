@@ -1,0 +1,67 @@
+'use client';
+
+import { useFormState, useFormStatus } from 'react-dom';
+import { login, type LoginFormState } from '@/actions/auth';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { LogIn, AlertCircle } from 'lucide-react';
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <Button type="submit" className="w-full" disabled={pending}>
+      {pending ? 'Logging in...' : 'Login'}
+      <LogIn />
+    </Button>
+  );
+}
+
+export function LoginForm() {
+  const initialState: LoginFormState = { error: null };
+  const [state, dispatch] = useFormState(login, initialState);
+
+  return (
+    <form action={dispatch} className="mx-auto max-w-sm space-y-6">
+      <div className="space-y-2">
+        <Label htmlFor="username">Username</Label>
+        <Input
+          id="username"
+          name="username"
+          placeholder="e.g., iitm"
+          required
+          autoComplete="username"
+        />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="password">Password</Label>
+        <Input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="e.g., iitm@123"
+          required
+          autoComplete="current-password"
+        />
+      </div>
+
+      {state.error && (
+        <Alert variant="destructive" className="bg-destructive/20">
+          <AlertCircle className="h-4 w-4" />
+          <AlertDescription>{state.error}</AlertDescription>
+        </Alert>
+      )}
+
+      <SubmitButton />
+
+      <div className="text-center text-sm text-muted-foreground">
+        <p className="font-bold">Available credentials:</p>
+        <p>stjosephs / stjosephs@123</p>
+        <p>iitm / iitm@123</p>
+        <p>saveetha / saveetha@123</p>
+        <p>admin / admin@123</p>
+      </div>
+    </form>
+  );
+}
