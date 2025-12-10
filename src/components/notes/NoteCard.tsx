@@ -6,14 +6,7 @@ import { Button } from '@/components/ui/button';
 import { BookText, User, School, Calendar, FileText } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { formatDistanceToNow } from 'date-fns';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
+import jsPDF from 'jspdf';
 
 type NoteCardProps = {
   note: Note;
@@ -23,6 +16,28 @@ type NoteCardProps = {
 export function NoteCard({ note, index }: NoteCardProps) {
   const uploadDate = new Date(note.uploadDate);
   const timeAgo = formatDistanceToNow(uploadDate, { addSuffix: true });
+
+  const handleViewNote = () => {
+    const doc = new jsPDF();
+    
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(16);
+    doc.text(note.subject, 15, 20);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
+    doc.text(`${note.college} - Taught by ${note.professor}`, 15, 26);
+    doc.text(`Uploaded ${timeAgo} by ${note.uploader}`, 15, 30);
+    
+    doc.setLineWidth(0.5);
+    doc.line(15, 35, 195, 35);
+
+    doc.setFontSize(12);
+    const splitContent = doc.splitTextToSize(note.content, 180);
+    doc.text(splitContent, 15, 45);
+
+    doc.output('dataurlnewwindow');
+  };
 
   return (
     <motion.div
@@ -55,24 +70,9 @@ export function NoteCard({ note, index }: NoteCardProps) {
           </div>
         </CardContent>
         <CardFooter>
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button className="w-full">
-                View Note <FileText />
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-[625px]">
-              <DialogHeader>
-                <DialogTitle className="font-headline text-2xl text-primary">{note.subject}</DialogTitle>
-                <DialogDescription>
-                  {note.college} - Taught by {note.professor}
-                </DialogDescription>
-              </DialogHeader>
-              <div className="prose prose-sm max-w-none rounded-md border bg-muted/50 p-4 whitespace-pre-wrap">
-                {note.content}
-              </div>
-            </DialogContent>
-          </Dialog>
+          <Button className="w-full" onClick={handleViewNote}>
+            View as PDF <FileText />
+          </Button>
         </CardFooter>
       </Card>
     </motion.div>
