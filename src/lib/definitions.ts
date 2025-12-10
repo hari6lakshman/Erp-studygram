@@ -5,5 +5,5 @@ export type Note = {
   professor: string;
   uploader: string;
   uploadDate: string;
-  downloadUrl: string;
+  content: string;
 };

@@ -35,7 +35,7 @@ export async function createNote(
   }
 
   // File handling is omitted as per project scope
-  // In a real app, you would upload the file to a storage service here.
+  // In a real app, you would upload the file and extract text content here.
 
   try {
     await addNote(validatedFields.data);

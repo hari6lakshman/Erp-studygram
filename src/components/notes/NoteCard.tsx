@@ -3,10 +3,17 @@
 import type { Note } from '@/lib/definitions';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { BookText, Download, User, School, Calendar } from 'lucide-react';
-import Link from 'next/link';
+import { BookText, User, School, Calendar, FileText } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { formatDistanceToNow } from 'date-fns';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 type NoteCardProps = {
   note: Note;
@@ -48,11 +55,24 @@ export function NoteCard({ note, index }: NoteCardProps) {
           </div>
         </CardContent>
         <CardFooter>
-          <Button asChild className="w-full">
-            <Link href={note.downloadUrl} target="_blank" rel="noopener noreferrer">
-              Download <Download />
-            </Link>
-          </Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button className="w-full">
+                View Note <FileText />
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[625px]">
+              <DialogHeader>
+                <DialogTitle className="font-headline text-2xl text-primary">{note.subject}</DialogTitle>
+                <DialogDescription>
+                  {note.college} - Taught by {note.professor}
+                </DialogDescription>
+              </DialogHeader>
+              <div className="prose prose-sm max-w-none rounded-md border bg-muted/50 p-4 whitespace-pre-wrap">
+                {note.content}
+              </div>
+            </DialogContent>
+          </Dialog>
         </CardFooter>
       </Card>
     </motion.div>
